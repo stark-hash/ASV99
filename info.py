@@ -29,7 +29,7 @@ USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
 BOT_START_TIME = time()
 
 # Bot images & videos
-PICS = (environ.get('PICS', 'https://telegra.ph/file/793b4d976897a55f69499.jpg https://telegra.ph/file/25c48a0dfd9e420df7201.jpg https://telegra.ph/file/edfbdf86cf9404ccd0c7e.jpg')).split()
+PICS = (environ.get('PICS', 'https://telegra.ph/file/f00aa611bc7d78653be2d.jpg https://telegra.ph/file/1017ebafed9cf26918f91.jpg https://telegra.ph/file/8634cdb325b0adf448232.jpg https://telegra.ph/file/768d1068021849536c37a.jpg https://telegra.ph/file/aff503e002443f6bcc621.jpg')).split()
 REQ_PICS = (environ.get('REQ_PICS', 'https://graph.org/file/772b4588d8968eca111db.jpg')).split()
 NOR_IMG = environ.get("NOR_IMG", "https://telegra.ph/file/0593a3103ba1b9a5855bf.jpg")
 MELCOW_VID = environ.get("MELCOW_VID", "https://telegra.ph/file/ecaf5f143fd622772abdc.mp4")
