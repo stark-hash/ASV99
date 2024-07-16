@@ -8,7 +8,7 @@ from pyrogram.errors import ChatAdminRequired, FloodWait
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from database.ia_filterdb import Media, get_file_details, unpack_new_file_id, get_bad_files
 from database.users_chats_db import db
-from info import CHANNELS, ADMINS, AUTH_CHANNEL, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, SUPPORT_CHAT, PROTECT_CONTENT, REQST_CHANNEL, SUPPORT_CHAT_ID, MAX_B_TN
+from info import CHANNELS, ADMINS, AUTH_CHANNELS, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, SUPPORT_CHAT, PROTECT_CONTENT, REQST_CHANNEL, SUPPORT_CHAT_ID, MAX_B_TN
 from utils import get_settings, get_size, is_subscribed, save_group_settings, temp
 from database.connections_mdb import active_connection
 import re
@@ -22,14 +22,14 @@ BATCH_FILES = {}
 async def start(client, message):
     if AUTH_CHANNEL:
         try:
-            btn = await is_subscribed(client, message, AUTH_CHANNEL)
+            btn = await is_subscribed(client, message, AUTH_CHANNELS)
             if btn:
                 username = (await client.get_me()).username
                 if message.command[1]:
-                    btn.append([InlineKeyboardButton("♻️ Try Again ♻️", url=f"https://t.me/{username}?start={message.command[1]}")])
+                    btn.append([InlineKeyboardButton("↻Tʀʏ Aɢᴀɪɴ↺", url=f"https://t.me/{username}?start={message.command[1]}")])
                 else:
-                    btn.append([InlineKeyboardButton("♻️ Try Again ♻️", url=f"https://t.me/{username}?start=true")])
-                await message.reply_text(text=f"<b>👋 Hello {message.from_user.mention},\n\nPlease join the channel then click on try again button. 😇</b>", reply_markup=InlineKeyboardMarkup(btn))
+                    btn.append([InlineKeyboardButton("↻Tʀʏ Aɢᴀɪɴ↺", url=f"https://t.me/{username}?start=true")])
+                await message.reply_text(text=f"<b>👋 𝑯𝒆𝒍𝒍𝒐 {message.from_user.mention},\n\nSᴏʀʀʏ Yᴏᴜʀ Nᴏᴛ Jᴏɪɴᴇᴅ Mʏ Cʜᴀɴɴᴇʟ Sᴏ Pʟᴇᴀsᴇ Cʟɪᴄᴋ 𝗝𝗼𝗶𝗻 Bᴜᴛᴛᴏɴ Tᴏ Jᴏɪɴ Mʏ Cʜᴀɴɴᴇʟ Aɴᴅ 𝗧𝗿𝘆 𝗔𝗴𝗮𝗶𝗻. 😇</b>", reply_markup=InlineKeyboardMarkup(btn))
                 return
         except Exception as e:
             print(e)
