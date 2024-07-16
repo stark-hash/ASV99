@@ -1,6 +1,6 @@
 import logging
 from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid
-from info import AUTH_CHANNELS, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, CUSTOM_FILE_CAPTION
+from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, CUSTOM_FILE_CAPTION
 from imdb import Cinemagoer 
 import asyncio
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
@@ -44,18 +44,30 @@ class temp(object):
     FILES_IDS = {}
     SPELL_CHECK = {}
 
-async def is_subscribed(bot, query):
-    for channel_id in AUTH_CHANNELS:
+async def is_subscribed(bot, query, channel):
+    btn = []
+    for id in channel:
+        chat = await bot.get_chat(int(id))
         try:
-            user = await bot.get_chat_member(channel_id, query.from_user.id)
-            if user.status == enums.ChatMemberStatus.BANNED:
-                return False
+            await bot.get_chat_member(id, query.from_user.id)
         except UserNotParticipant:
-            return False
+            btn.append([InlineKeyboardButton(f'Join {chat.title}', url=chat.invite_link)])
         except Exception as e:
-            logger.exception(e)
-            return False
-    return True
+            pass
+    return btn
+
+async def is_ssubscribed(bot, query):
+    try:
+        user = await bot.get_chat_member(AUTH_CHANNEL, query.from_user.id)
+    except UserNotParticipant:
+        pass
+    except Exception as e:
+        logger.exception(e)
+    else:
+        if user.status != enums.ChatMemberStatus.BANNED:
+            return True
+
+    return False
 
 async def get_poster(query, bulk=False, id=False, file=None):
     if not id:
