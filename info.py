@@ -37,7 +37,7 @@ SPELL_IMG = environ.get("SPELL_IMG", "https://telegra.ph/file/2a888a370f479f4338
 
 #FSub
 
-AUTH_CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('AUTH_CHANNELS', '-1001681286512 -1002002780018').split()] # give channel id with seperate space. Ex : ('-10073828 -102782829 -1007282828')
+AUTH_CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('AUTH_CHANNELS', '-1001681286512 -1002166138796').split()] # give channel id with seperate space. Ex : ('-10073828 -102782829 -1007282828')
 auth_channel = environ.get('AUTH_CHANNEL')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 
