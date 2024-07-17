@@ -31,7 +31,7 @@ BOT_START_TIME = time()
 # Bot images & videos
 PICS = (environ.get('PICS', 'https://telegra.ph/file/f00aa611bc7d78653be2d.jpg https://telegra.ph/file/1017ebafed9cf26918f91.jpg https://telegra.ph/file/8634cdb325b0adf448232.jpg https://telegra.ph/file/768d1068021849536c37a.jpg https://telegra.ph/file/aff503e002443f6bcc621.jpg')).split()
 REQ_PICS = (environ.get('REQ_PICS', 'https://telegra.ph/file/f4c687fe798c1cf5e98cb.jpg')).split()
-NOR_IMG = environ.get("NOR_IMG", 'https://graph.org/file/f4c687fe798c1cf5e98cb.jpg')
+NOR_IMG = environ.get("NOR_IMG", 'https://telegra.ph/file/b59169a7bc976953af387.jpg')
 MELCOW_VID = environ.get("MELCOW_VID", "https://telegra.ph/file/ecaf5f143fd622772abdc.mp4")
 SPELL_IMG = environ.get("SPELL_IMG", "https://telegra.ph/file/2a888a370f479f4338f7c.jpg")
 
